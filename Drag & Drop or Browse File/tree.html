@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body{
+  font-family:poppins;
+  font-size:20px;
+}
+.outer{
+  position:absolute;
+  top:30%;
+  left:40%;
+}
+ul{
+  list-style:none;
+}
+#ul{
+  margin:0;
+  padding:0;
+}
+.caret{
+  cursor:pointer;
+  user-select:none;
+}
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 5px;
+}
+.caret-down::before {
+  transform: rotate(90deg);  
+}
+.nested{
+  display:none;
+}
+.active{
+  display: block;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="outer">
+    <ul id="ul">
+      <!-- <li><span class="caret">ItemSo</span>
+        <ul class="nested">
+          <li>Item 1</li>
+          <li><span class="caret">Item 3</span>
+            <ul class="nested">
+              <li>Item 3.1</li>
+              <li>Item 3.KO2</li>
+              <li><span class="caret">Item 3.3</span>
+                <ul class="nested">
+                  <li>Item 3.3.1</li>
+                  <li>Item 3.3.2</li>
+                  <li>Item 3.3.KO</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Item 2</li>
+          <li><span class="caret">Item 3</span>
+            <ul class="nested">
+              <li>Item 3.1</li>
+              <li>Item 3.2</li>
+              <li><span class="caret">Item 3.3</span>
+                <ul class="nested">
+                  <li>Item 3.3.1</li>
+                  <li>Item 3.3.2</li>
+                  <li>Item 3.3.3</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      
+      <li><span class="caret">Item</span>
+        <ul class="nested">
+          <li>Item 1</li>
+          <li><span class="caret">Item 3</span>
+            <ul class="nested">
+              <li>Item 3.1</li>
+              <li>Item 3.2</li>
+              <li><span class="caret">Item 3.3</span>
+                <ul class="nested">
+                  <li>Item 3.3.1</li>
+                  <li>Item 3.3.2</li>
+                  <li>Item 3.3.3</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Item 2</li>
+          <li><span class="caret">Item 3</span>
+            <ul class="nested">
+              <li>Item 3.1</li>
+              <li>Item 3.2</li>
+              <li><span class="caret">Item 3.3</span>
+                <ul class="nested">
+                  <li>Item 3.3.1</li>
+                  <li>Item 3.3.2</li>
+                  <li>Item 3.3.3</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li> -->
+    </ul> 
+  </div>
+  
+</body>
+<script>
+
+
+
+var list =  JSON.parse(localStorage.getItem('user'));
+		//Comparer Function    
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }    
+}    
+    
+list.sort(GetSortOrder("Handle_ID")); //Pass the attribute to be sorted on        
+console.log(list); 
+
+
+
+       var board=""; 
+       var brk=""
+      for(let i=0;i<list.length;i++){
+
+
+        
+
+          brk+=`<li><span class="caret">`+list[i].dc.relation.ispartof+`</span></li>`
+       }
+       board=brk;
+    
+
+document.getElementById('ul').innerHTML=board;
+
+var toggler = document.getElementsByClassName("caret");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+  toggler[i].addEventListener("click", function() {
+    this.parentElement.querySelector(".nested").classList.toggle("active");
+    this.classList.toggle("caret-down");
+  });
+}
+
+</script>
+</html>

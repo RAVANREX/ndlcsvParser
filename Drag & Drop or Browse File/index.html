@@ -1,0 +1,46 @@
+<!DOCTYPE  html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop or Browse: File Upload | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        margin-left: 90900px;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      </style>
+</head>
+<body>
+  <div class="drag-area">
+    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+    <header>Select & Upload File</header>
+    <div  class="name"></div>
+    <button id="button">Browse File</button>
+
+    
+       <input id="file" type="file" name="file" hidden >
+
+       <button style="margin: 30px;" id="sendbutton">SEND SELECTED CSV</button>
+
+  </div>
+  
+  <script src="script.js"></script>
+
+</body>
+</html>
